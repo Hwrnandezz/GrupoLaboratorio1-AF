@@ -2,13 +2,13 @@
 #include <string>
 #include <vector>
 
-double calorias_iniciales=2000;
-double calorias_agregadas=0;
-double calorias_eliminadas=0;
+double calorias_iniciales = 2000;
+double calorias_agregadas = 0;
+double calorias_eliminadas = 0;
 
+double Consultar_calorias(double calorias_iniciales, double calorias_agregadas, double calorias_eliminadas)
+{
 
-double Consultar_calorias(double calorias_iniciales, double calorias_agregadas, double calorias_eliminadas){
-    
     std::cout << "Calorias iniciales: " << calorias_iniciales << "\n";
     std::cout << "Calorias agregadas: " << calorias_agregadas << "\n";
     std::cout << "Calorias eliminadas: " << calorias_eliminadas << "\n";
@@ -16,7 +16,8 @@ double Consultar_calorias(double calorias_iniciales, double calorias_agregadas, 
     return calorias_iniciales;
 }
 
-int menu( ){
+int menu()
+{
 
     int opcion = 0;
     while (opcion != 4)
@@ -28,63 +29,65 @@ int menu( ){
         std::cout << "4. Salir\n";
         std::cout << "Elige una opcion: ";
         std::cin >> opcion;
-    
-        if (std::cin.fail()) {
+
+        if (std::cin.fail())
+        {
             std::cin.clear();
             std::cin.ignore(10000, '\n');
             std::cout << "Entrada invalida. Por favor ingresa un numero.\n";
             continue;
         }
-    
+
         switch (opcion)
         {
-            case 1:
-                Consultar_calorias(calorias_iniciales, calorias_agregadas, calorias_eliminadas  );
-                break;
-            case 2:
-                // Lógica para agregar calorias
-                break;
-            case 3:
-                // Lógica para eliminar calorias
-                break;
-            case 4:
-                std::cout << "Saliendo...\n";
-                break;
-            default:
-                std::cout << "Opcion no valida.\n";
-                break;
+        case 1:
+            Consultar_calorias(calorias_iniciales, calorias_agregadas, calorias_eliminadas);
+            break;
+        case 2:
+            // Lógica para agregar calorias
+            break;
+        case 3:
+            // Lógica para eliminar calorias
+            break;
+        case 4:
+            std::cout << "Saliendo...\n";
+            break;
+        default:
+            std::cout << "Opcion no valida.\n";
+            break;
         }
     }
 }
 
-
-
-
-
-
-
-
-
-int main()
- {
-
-   
-
-    return 0;
-
 void AgregarCalorias(int &calorias, int cant);
 
-int main() {
-
+int main()
+{
 
     return 0;
 }
 
-void AgregarCalorias(int &calorias, int cant) {
-    if (cant < 0) {
+void AgregarCalorias(int &calorias, int cant)
+{
+    if (cant < 0)
+    {
         std::cout << "No se permiten cantidades negativas." << "\n";
-    } else {
+    }
+    else
+    {
         calorias += cant;
         std::cout << "Operacion realizada correctamente. Se agregaron " << cant << " calorias." << std::endl;
+    }
+}
+void quemarCalorias(int *totalCalorias, int caloriasEjercicio)
+{
+    if (totalCalorias != nullptr)
+    {
+        *totalCalorias -= caloriasEjercicio;
+        std::cout << "se quemaron " << caloriasEjercicio << " calorias" << "\n";
+    }
+    else
+    {
+        std::cout << "Error: puntero nulo" << "\n";
     }
 }
