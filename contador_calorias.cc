@@ -90,7 +90,7 @@ void quemarCalorias(double *totalCalorias, double caloriasEjercicio)
 {
     if (totalCalorias != nullptr)
     {
-        *totalCalorias -= caloriasEjercicio;
+        *totalCalorias += caloriasEjercicio;
         std::cout << "Se quemaron " << caloriasEjercicio << " calorias" << "\n";
     }
     else
