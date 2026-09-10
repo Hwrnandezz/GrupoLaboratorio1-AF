@@ -2,9 +2,6 @@
 #include <string>
 #include <vector>
 
-
-
-//programa de contador de calorias;
 double calorias_iniciales=2000;
 double calorias_agregadas=0;
 double calorias_eliminadas=0;
