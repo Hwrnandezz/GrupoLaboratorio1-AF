@@ -6,19 +6,22 @@ double calorias_iniciales = 2000;
 double calorias_agregadas = 0;
 double calorias_eliminadas = 0;
 
+void AgregarCalorias(double &calorias, double cant);
+void quemarCalorias(double *totalCalorias, double caloriasEjercicio);
+
 double Consultar_calorias(double calorias_iniciales, double calorias_agregadas, double calorias_eliminadas)
 {
+    double total = calorias_iniciales + calorias_agregadas - calorias_eliminadas;
 
     std::cout << "Calorias iniciales: " << calorias_iniciales << "\n";
     std::cout << "Calorias agregadas: " << calorias_agregadas << "\n";
     std::cout << "Calorias eliminadas: " << calorias_eliminadas << "\n";
-
-    return calorias_iniciales;
+  
+    return total;
 }
 
 int menu()
 {
-
     int opcion = 0;
     while (opcion != 4)
     {
@@ -44,11 +47,21 @@ int menu()
             Consultar_calorias(calorias_iniciales, calorias_agregadas, calorias_eliminadas);
             break;
         case 2:
-            // Lógica para agregar calorias
+        {
+            double cant;
+            std::cout << "Cuantas calorias deseas agregar? ";
+            std::cin >> cant;
+            AgregarCalorias(calorias_agregadas, cant);
             break;
+        }
         case 3:
-            // Lógica para eliminar calorias
+        {
+            double cant;
+            std::cout << "Cuantas calorias quemadas? ";
+            std::cin >> cant;
+            quemarCalorias(&calorias_eliminadas, cant);
             break;
+        }
         case 4:
             std::cout << "Saliendo...\n";
             break;
@@ -57,17 +70,10 @@ int menu()
             break;
         }
     }
-}
-
-void AgregarCalorias(int &calorias, int cant);
-
-int main()
-{
-
     return 0;
 }
 
-void AgregarCalorias(int &calorias, int cant)
+void AgregarCalorias(double &calorias, double cant)
 {
     if (cant < 0)
     {
@@ -76,18 +82,25 @@ void AgregarCalorias(int &calorias, int cant)
     else
     {
         calorias += cant;
-        std::cout << "Operacion realizada correctamente. Se agregaron " << cant << " calorias." << std::endl;
+        std::cout << "Operacion realizada correctamente. Se agregaron " << cant << " calorias." << "\n";
     }
 }
-void quemarCalorias(int *totalCalorias, int caloriasEjercicio)
+
+void quemarCalorias(double *totalCalorias, double caloriasEjercicio)
 {
     if (totalCalorias != nullptr)
     {
         *totalCalorias -= caloriasEjercicio;
-        std::cout << "se quemaron " << caloriasEjercicio << " calorias" << "\n";
+        std::cout << "Se quemaron " << caloriasEjercicio << " calorias" << "\n";
     }
     else
     {
         std::cout << "Error: puntero nulo" << "\n";
     }
+}
+
+int main()
+{
+    menu();
+    return 0;
 }
